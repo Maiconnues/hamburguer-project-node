@@ -12,7 +12,7 @@ const checkOrdersId = (request, response, next) => {
     request.ordersId = id
     next()
 }
-const myOrdersMiddLerware = (request, response, next) =>{
+const myOrdersMiddLerware = (request, response, next) => {
     console.log(request.method, request.url)
     next()
 }
