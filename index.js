@@ -40,6 +40,13 @@ app.put('/orders/:id', checkOrdersId, myOrdersMiddLeware, (request, response) =>
 })
 app.patch('/orders/:id', checkOrdersId, myOrdersMiddLeware, (request, response) => {
     const index = request.ordersIndex
+    const id = request.ordersId
+    const updateStatus  = { id, order: orders[index].order, clientName: orders[index].clientName, price: orders[index].price, status:'pronto'}
+    orders[index] = updateStatus 
+    return response.status(201).json(updateStatus)   
+})
+app.delete('/orders/:id', checkOrdersId, myOrdersMiddLeware, (request, response) => {
+    const index = request.ordersIndex
     orders.splice(index, 1)
     return response.status(204).json(orders)
 })
